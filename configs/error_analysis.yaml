@@ -1,0 +1,39 @@
+run:
+  name: error_analysis
+  output_dir: outputs/error_analysis
+  seed: 42
+  device: auto
+
+dataset:
+  type: imdb
+  train_size: 20000
+  val_size: 5000
+  test_split: test
+  lang: en
+
+text:
+  max_len: 256
+  min_freq: 5
+
+# Which checkpoint to analyze:
+# - "auto": use outputs/bilstm_attention/best.pt by default (or change below)
+checkpoint:
+  path: outputs/bilstm_attention/best.pt
+  vocab_path: outputs/bilstm_attention/vocab.json
+
+model:
+  embed_dim: 128
+  hidden_dim: 128
+  num_layers: 1
+  bidirectional: true
+  dropout: 0.5
+  attn_dim: 128
+
+analysis:
+  batch_size: 64
+  # Buckets
+  borderline_prob_low: 0.35
+  borderline_prob_high: 0.65
+  high_conf_topk: 50
+  sample_cap_per_bucket: 50
+  label_export_size: 200

@@ -1,0 +1,16 @@
+numpy>=1.23
+pandas>=2.0
+scikit-learn>=1.3
+jieba>=0.42.1
+pyyaml>=6.0
+tqdm>=4.66
+matplotlib>=3.7
+
+# Deep Learning
+torch>=2.1
+
+# HuggingFace (for IMDb demo)
+datasets>=2.16
+
+# Optional: for reading .docx in dataset building
+python-docx>=1.1

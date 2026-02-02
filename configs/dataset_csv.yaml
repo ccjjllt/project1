@@ -1,0 +1,26 @@
+# Build a local CSV dataset into train/val/test splits.
+# Expected raw CSV format:
+#   - text: str
+#   - label: int (0..num_classes-1)
+dataset:
+  type: csv
+  input_csv: data/raw/raw_data.csv
+  text_col: text
+  label_col: label
+  output_clean_csv: data/processed/cleaned.csv
+  output_split_dir: data/splits
+  # If your samples come from different source files (to prevent leakage),
+  # set this column and the splitter will split by source_file first.
+  source_file_col: null
+
+cleaning:
+  min_len: 5
+  max_len: 512
+  normalize_unicode: true
+  collapse_whitespace: true
+
+split:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  seed: 42

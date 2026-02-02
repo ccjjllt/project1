@@ -1,0 +1,30 @@
+run:
+  name: bilstm_pool
+  output_dir: outputs/bilstm_pool
+  seed: 42
+  device: auto   # auto|cpu|cuda
+
+dataset:
+  # Demo on IMDb (no local data needed)
+  type: imdb
+  train_size: 20000
+  val_size: 5000
+  test_split: test
+  lang: en
+
+text:
+  max_len: 256
+  min_freq: 5
+
+train:
+  batch_size: 64
+  epochs: 5
+  lr: 0.001
+
+model:
+  embed_dim: 128
+  hidden_dim: 128
+  num_layers: 1
+  bidirectional: true
+  dropout: 0.5
+  pooling: mean   # mean|max|last
