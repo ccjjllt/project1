@@ -5,20 +5,7 @@
 
 ---
 
-## 1. 你最终要交付什么（校招面试视角）
-
-面试官最关心的不是“你在 notebook 跑过”，而是：
-
-1) **项目结构清晰**：数据/模型/训练/实验/分析各自独立；  
-2) **可复现**：只看 README 就能跑通；  
-3) **可对比**：同一套评测指标，baseline vs 改进；  
-4) **可解释**：错误分析能指出失败模式，并能反推下一步改进。
-
-本仓库就是按这个标准重构的。
-
----
-
-## 2. 目录结构（你要能背出来 + 能解释为什么这样分）
+## 1. 目录结构（你要能背出来 + 能解释为什么这样分）
 
 ```
 nlp_textclf_project/
@@ -51,7 +38,7 @@ nlp_textclf_project/
 
 ---
 
-## 3. 环境安装
+## 2. 环境安装
 
 ```bash
 # 1) 建议新建虚拟环境
@@ -64,7 +51,7 @@ make setup
 
 ---
 
-## 4. 数据（两种方式）
+## 3. 数据（两种方式）
 
 ### 方式 A：直接用 IMDb（推荐先跑通工程）
 不需要你准备数据，会自动下载（HuggingFace datasets）。
@@ -95,9 +82,9 @@ make build-data
 
 ---
 
-## 5. 训练与评测
+## 4. 训练与评测
 
-### 5.1 TF-IDF + LogisticRegression（baseline）
+### 4.1 TF-IDF + LogisticRegression（baseline）
 ```bash
 make train-tfidf
 ```
@@ -113,7 +100,7 @@ make train-tfidf
 
 ---
 
-### 5.2 BiLSTM（Pooling 版本）
+### 4.2 BiLSTM（Pooling 版本）
 ```bash
 make train-lstm
 ```
@@ -127,7 +114,7 @@ make train-lstm
 
 ---
 
-### 5.3 BiLSTM + Attention
+### 4.3 BiLSTM + Attention
 ```bash
 make train-attn
 ```
@@ -139,7 +126,7 @@ make train-attn
 
 ---
 
-## 6. 消融实验（ablation）
+## 5. 消融实验（ablation）
 
 目标：回答“Attention 到底有没有用？”以及“Pooling 怎么选？”
 
@@ -158,7 +145,7 @@ make ablation
 
 ---
 
-## 7. 错误分析（error analysis）
+## 6. 错误分析（error analysis）
 
 错误分析不是“看几个错例”，而是要做到：
 
@@ -180,9 +167,9 @@ make error-analysis
 
 ---
 
-## 8. 面试时怎么讲（你要的“项目故事线”）
+## 8. 项目故事线
 
-> **1 分钟讲清楚 baseline → 改进 → ablation → error analysis**
+> **1 baseline → 改进 → ablation → error analysis**
 
 - 数据：说明数据来源、清洗规则、划分方式（是否按 source_file 防泄漏）  
 - baseline：TF-IDF + LR，指标是多少（给一个下限）  
@@ -193,7 +180,7 @@ make error-analysis
 
 ---
 
-## 9. 常见工程误区（你这一天要“彻底改掉”）
+## 9. 常见工程误区
 
 - **notebook 混成一坨**：训练、数据、可视化、调参全在一个文件 → 无法复现  
 - **没有配置文件**：每次改超参都要改代码 → 无法追溯  
